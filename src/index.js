@@ -49,18 +49,18 @@ app.get("/resources", (req, res) => {
   } else {
     // Filter resources based on the provided category
     const filteredResources = resources.filter(
-      (resource) => resource.category === category
+      (resource) => resource.category.toLowerCase() === category.toLowerCase()
     );
 
-    if (filteredResources.length > 0) {
-      // If resources are found for the specified category, respond with a 200 status and the filtered resources
-      res.status(200).json(filteredResources);
-    } else {
-      // If no resources are found for the specified category, respond with a 404 status and a message
-      res
-        .status(404)
-        .json({ message: `No resources found for category: ${category}` });
-    }
+    // if (filteredResources.length > 0) {
+    // If resources are found for the specified category, respond with a 200 status and the filtered resources
+    res.status(200).json(filteredResources);
+    // } else {
+    // If no resources are found for the specified category, respond with a 404 status and a message
+    // res
+    //   .status(404)
+    //   .json({ message: `No resources found for category: ${category}` });
+    // }
   }
 });
 
